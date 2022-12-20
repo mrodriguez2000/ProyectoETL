@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LAPTOP-UP9Q630H.DBDestino"
+  DTS:DTSID="{771CE16E-130B-435A-ADE7-B191F98A7E71}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=LAPTOP-UP9Q630H;Initial Catalog=DBDestino;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-ETL Usuarios-{771CE16E-130B-435A-ADE7-B191F98A7E71}LAPTOP-UP9Q630H.DBDestino;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

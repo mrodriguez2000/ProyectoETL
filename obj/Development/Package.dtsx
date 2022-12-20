@@ -1,0 +1,3292 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/14/2022 11:23:33 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-UP9Q630H"
+  DTS:CreatorName="LAPTOP-UP9Q630H\Miguel Rodríguez"
+  DTS:DTSID="{97B3D7D2-678F-4E21-B043-6A01977498F1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.948.0"
+  DTS:LocaleID="9226"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="98"
+  DTS:VersionGUID="{BEAD246A-D406-4BAF-B479-374CD0030713}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Agrupar datos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5089EFA2-8632-472F-B011-B51AFC9E6C34}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Agrupar datos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Agrupar datos\Condicionales modalidad de trabajo"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Condicionales modalidad de trabajo"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Agrupar datos\Condicionales modalidad de trabajo.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Agrupar datos\Condicionales modalidad de trabajo.Inputs[Conditional Split Input].Columns[ModalidadTrabajo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ModalidadTrabajo"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[ModalidadTrabajo]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Agrupar datos\Condicionales modalidad de trabajo.Outputs[Remoto]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Remoto"
+                  synchronousInputId="Package\Agrupar datos\Condicionales modalidad de trabajo.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[ModalidadTrabajo]} == "Remoto"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ModalidadTrabajo == "Remoto"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Agrupar datos\Condicionales modalidad de trabajo.Outputs[Hibrido]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Hibrido"
+                  synchronousInputId="Package\Agrupar datos\Condicionales modalidad de trabajo.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[ModalidadTrabajo]} == "Hibrido"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ModalidadTrabajo == "Hibrido"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Agrupar datos\Condicionales modalidad de trabajo.Outputs[Presencial]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Presencial"
+                  synchronousInputId="Package\Agrupar datos\Condicionales modalidad de trabajo.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Agrupar datos\Condicionales modalidad de trabajo.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Agrupar datos\Condicionales modalidad de trabajo.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Agrupar datos\Condicionales modalidad de trabajo.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Agrupar datos\Condicionales modalidad de trabajo.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Condicionales modalidad de trabajo.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Agrupar datos\Condicionales modalidad de trabajo.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Agrupar datos\Modalidad Hibrido"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Modalidad Hibrido"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Modalidad Hibrido]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Agrupar datos\Modalidad Hibrido.Connections[OleDbConnection]"
+                  connectionManagerID="{771CE16E-130B-435A-ADE7-B191F98A7E71}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-UP9Q630H.DBDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].Columns[SueldoDevengado]"
+                      cachedDataType="r8"
+                      cachedName="SueldoDevengado"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].Columns[NombreEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreEmpresa"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].Columns[CategoriaEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="CategoriaEmpresa"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[CategoriaEmpresa]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[CategoriaEmpresa]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].Columns[ModalidadTrabajo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ModalidadTrabajo"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[ModalidadTrabajo]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[ModalidadTrabajo]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      dataType="r8"
+                      name="SueldoDevengado" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[CategoriaEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="CategoriaEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[ModalidadTrabajo]"
+                      dataType="wstr"
+                      length="30"
+                      name="ModalidadTrabajo" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Agrupar datos\Modalidad Hibrido.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Agrupar datos\Modalidad Hibrido.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Modalidad Hibrido.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Agrupar datos\Modalidad Hibrido.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Agrupar datos\Modalidad Presencial"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Modalidad Presencial"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Modalidad Presencial]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Agrupar datos\Modalidad Presencial.Connections[OleDbConnection]"
+                  connectionManagerID="{771CE16E-130B-435A-ADE7-B191F98A7E71}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-UP9Q630H.DBDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].Columns[SueldoDevengado]"
+                      cachedDataType="r8"
+                      cachedName="SueldoDevengado"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].Columns[NombreEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreEmpresa"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].Columns[CategoriaEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="CategoriaEmpresa"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[CategoriaEmpresa]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[CategoriaEmpresa]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].Columns[ModalidadTrabajo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ModalidadTrabajo"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[ModalidadTrabajo]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[ModalidadTrabajo]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      dataType="r8"
+                      name="SueldoDevengado" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[CategoriaEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="CategoriaEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[ModalidadTrabajo]"
+                      dataType="wstr"
+                      length="30"
+                      name="ModalidadTrabajo" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Agrupar datos\Modalidad Presencial.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Agrupar datos\Modalidad Presencial.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Modalidad Presencial.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Agrupar datos\Modalidad Presencial.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Agrupar datos\Modalidad Remoto"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Modalidad Remoto"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Modalidad Remoto]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Agrupar datos\Modalidad Remoto.Connections[OleDbConnection]"
+                  connectionManagerID="{771CE16E-130B-435A-ADE7-B191F98A7E71}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-UP9Q630H.DBDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].Columns[SueldoDevengado]"
+                      cachedDataType="r8"
+                      cachedName="SueldoDevengado"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].Columns[NombreEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreEmpresa"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].Columns[CategoriaEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="CategoriaEmpresa"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[CategoriaEmpresa]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[CategoriaEmpresa]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].Columns[ModalidadTrabajo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ModalidadTrabajo"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[ModalidadTrabajo]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[ModalidadTrabajo]" />
+                    <inputColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      dataType="r8"
+                      name="SueldoDevengado" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[CategoriaEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="CategoriaEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[ModalidadTrabajo]"
+                      dataType="wstr"
+                      length="30"
+                      name="ModalidadTrabajo" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Agrupar datos\Modalidad Remoto.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Agrupar datos\Modalidad Remoto.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Modalidad Remoto.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Agrupar datos\Modalidad Remoto.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Agrupar datos\Origen de datos"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="Origen de datos"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Trabajadores.Nombre, Trabajadores.Cargo, Trabajadores.SueldoDevengado, Empresa.NombreEmpresa, Empresa.CategoriaEmpresa, 
+Trabajadores.ModalidadTrabajo, Trabajadores.Ciudad FROM Trabajadores INNER JOIN Empresa ON Trabajadores.Empresa = Empresa.IdEmpresa;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Agrupar datos\Origen de datos.Connections[IDbConnection]"
+                  connectionManagerID="{46F35456-5E22-497A-A87A-61CE3665AF4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-UP9Q630H.ProyectoUsuarios]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Nombre]"
+                      length="30"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Cargo]"
+                      length="30"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]"
+                      name="Cargo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[SueldoDevengado]"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]"
+                      name="SueldoDevengado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[NombreEmpresa]"
+                      length="30"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]"
+                      name="NombreEmpresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[CategoriaEmpresa]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[CategoriaEmpresa]"
+                      length="30"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[CategoriaEmpresa]"
+                      name="CategoriaEmpresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[ModalidadTrabajo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[ModalidadTrabajo]"
+                      length="30"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[ModalidadTrabajo]"
+                      name="ModalidadTrabajo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Ciudad]"
+                      length="30"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]"
+                      name="Ciudad"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[SueldoDevengado]"
+                      dataType="r8"
+                      name="SueldoDevengado" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[CategoriaEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="CategoriaEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[ModalidadTrabajo]"
+                      dataType="wstr"
+                      length="30"
+                      name="ModalidadTrabajo" />
+                    <externalMetadataColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Nombre]"
+                      name="Nombre" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Cargo]"
+                      name="Cargo" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[SueldoDevengado]"
+                      dataType="r8"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[SueldoDevengado]"
+                      name="SueldoDevengado" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[NombreEmpresa]"
+                      name="NombreEmpresa" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[CategoriaEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[CategoriaEmpresa]"
+                      name="CategoriaEmpresa" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ModalidadTrabajo]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ModalidadTrabajo]"
+                      name="ModalidadTrabajo" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Ciudad]"
+                      name="Ciudad" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Agrupar datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Agrupar datos.Paths[Hibrido]"
+              endId="Package\Agrupar datos\Modalidad Hibrido.Inputs[OLE DB Destination Input]"
+              name="Hibrido"
+              startId="Package\Agrupar datos\Condicionales modalidad de trabajo.Outputs[Hibrido]" />
+            <path
+              refId="Package\Agrupar datos.Paths[Presencial]"
+              endId="Package\Agrupar datos\Modalidad Presencial.Inputs[OLE DB Destination Input]"
+              name="Presencial"
+              startId="Package\Agrupar datos\Condicionales modalidad de trabajo.Outputs[Presencial]" />
+            <path
+              refId="Package\Agrupar datos.Paths[Remoto]"
+              endId="Package\Agrupar datos\Modalidad Remoto.Inputs[OLE DB Destination Input]"
+              name="Remoto"
+              startId="Package\Agrupar datos\Condicionales modalidad de trabajo.Outputs[Remoto]" />
+            <path
+              refId="Package\Agrupar datos.Paths[Salida de origen de ADO NET]"
+              endId="Package\Agrupar datos\Condicionales modalidad de trabajo.Inputs[Conditional Split Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\Agrupar datos\Origen de datos.Outputs[Salida de origen de ADO NET]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Cargue de datos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1B5158E5-C91E-49EA-BDC5-40BF0E051A33}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Cargue de datos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Cargue de datos\Datos"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Datos"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Datos]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargue de datos\Datos.Connections[OleDbConnection]"
+                  connectionManagerID="{771CE16E-130B-435A-ADE7-B191F98A7E71}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-UP9Q630H.DBDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      externalMetadataColumnId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]" />
+                    <inputColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].Columns[SueldoDevengado]"
+                      cachedDataType="r8"
+                      cachedName="SueldoDevengado"
+                      externalMetadataColumnId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]" />
+                    <inputColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].Columns[NombreEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreEmpresa"
+                      externalMetadataColumnId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]" />
+                    <inputColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].Columns[CategoriaEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="CategoriaEmpresa"
+                      externalMetadataColumnId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[CategoriaEmpresa]"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[CategoriaEmpresa]" />
+                    <inputColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].Columns[ModalidadTrabajo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ModalidadTrabajo"
+                      externalMetadataColumnId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[ModalidadTrabajo]"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[ModalidadTrabajo]" />
+                    <inputColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      dataType="r8"
+                      name="SueldoDevengado" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[CategoriaEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="CategoriaEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[ModalidadTrabajo]"
+                      dataType="wstr"
+                      length="30"
+                      name="ModalidadTrabajo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargue de datos\Datos.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue de datos\Datos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargue de datos\Datos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Datos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargue de datos\Datos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargue de datos\Origen de datos"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="Origen de datos"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Trabajadores.Nombre, Trabajadores.Cargo, Trabajadores.SueldoDevengado, Empresa.NombreEmpresa, Empresa.CategoriaEmpresa, 
+Trabajadores.ModalidadTrabajo, Trabajadores.Ciudad FROM Trabajadores INNER JOIN Empresa ON Trabajadores.Empresa = Empresa.IdEmpresa;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargue de datos\Origen de datos.Connections[IDbConnection]"
+                  connectionManagerID="{46F35456-5E22-497A-A87A-61CE3665AF4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-UP9Q630H.ProyectoUsuarios]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Nombre]"
+                      length="30"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Cargo]"
+                      length="30"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]"
+                      name="Cargo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[SueldoDevengado]"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]"
+                      name="SueldoDevengado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[NombreEmpresa]"
+                      length="30"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]"
+                      name="NombreEmpresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[CategoriaEmpresa]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[CategoriaEmpresa]"
+                      length="30"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[CategoriaEmpresa]"
+                      name="CategoriaEmpresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[ModalidadTrabajo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[ModalidadTrabajo]"
+                      length="30"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[ModalidadTrabajo]"
+                      name="ModalidadTrabajo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Ciudad]"
+                      length="30"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]"
+                      name="Ciudad"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[SueldoDevengado]"
+                      dataType="r8"
+                      name="SueldoDevengado" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[CategoriaEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="CategoriaEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[ModalidadTrabajo]"
+                      dataType="wstr"
+                      length="30"
+                      name="ModalidadTrabajo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Nombre]"
+                      name="Nombre" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Cargo]"
+                      name="Cargo" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[SueldoDevengado]"
+                      dataType="r8"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[SueldoDevengado]"
+                      name="SueldoDevengado" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[NombreEmpresa]"
+                      name="NombreEmpresa" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[CategoriaEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[CategoriaEmpresa]"
+                      name="CategoriaEmpresa" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ModalidadTrabajo]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ModalidadTrabajo]"
+                      name="ModalidadTrabajo" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Ciudad]"
+                      name="Ciudad" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargue de datos\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Cargue de datos.Paths[Salida de origen de ADO NET]"
+              endId="Package\Cargue de datos\Datos.Inputs[OLE DB Destination Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\Cargue de datos\Origen de datos.Outputs[Salida de origen de ADO NET]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Ciudades"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{053704C8-1C7A-4550-B75A-A9ECEDE8E865}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Ciudades"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Ciudades\Barranquilla"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Barranquilla"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Barranquilla]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ciudades\Barranquilla.Connections[OleDbConnection]"
+                  connectionManagerID="{771CE16E-130B-435A-ADE7-B191F98A7E71}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-UP9Q630H.DBDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      externalMetadataColumnId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].Columns[SueldoDevengado]"
+                      cachedDataType="r8"
+                      cachedName="SueldoDevengado"
+                      externalMetadataColumnId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].Columns[NombreEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreEmpresa"
+                      externalMetadataColumnId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      dataType="r8"
+                      name="SueldoDevengado" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ciudades\Barranquilla.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ciudades\Barranquilla.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Barranquilla.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ciudades\Barranquilla.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Barranquilla.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ciudades\Bogota"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Bogota"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Bogota]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ciudades\Bogota.Connections[OleDbConnection]"
+                  connectionManagerID="{771CE16E-130B-435A-ADE7-B191F98A7E71}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-UP9Q630H.DBDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      externalMetadataColumnId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].Columns[SueldoDevengado]"
+                      cachedDataType="r8"
+                      cachedName="SueldoDevengado"
+                      externalMetadataColumnId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].Columns[NombreEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreEmpresa"
+                      externalMetadataColumnId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      dataType="r8"
+                      name="SueldoDevengado" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ciudades\Bogota.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ciudades\Bogota.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Bogota.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ciudades\Bogota.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Bogota.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ciudades\Bucaramanga"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Bucaramanga"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Bucaramanga]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ciudades\Bucaramanga.Connections[OleDbConnection]"
+                  connectionManagerID="{771CE16E-130B-435A-ADE7-B191F98A7E71}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-UP9Q630H.DBDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      externalMetadataColumnId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].Columns[SueldoDevengado]"
+                      cachedDataType="r8"
+                      cachedName="SueldoDevengado"
+                      externalMetadataColumnId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].Columns[NombreEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreEmpresa"
+                      externalMetadataColumnId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      dataType="r8"
+                      name="SueldoDevengado" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ciudades\Bucaramanga.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ciudades\Bucaramanga.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Bucaramanga.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ciudades\Bucaramanga.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Bucaramanga.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ciudades\Cali"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Cali"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Cali]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ciudades\Cali.Connections[OleDbConnection]"
+                  connectionManagerID="{771CE16E-130B-435A-ADE7-B191F98A7E71}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-UP9Q630H.DBDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      externalMetadataColumnId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].Columns[SueldoDevengado]"
+                      cachedDataType="r8"
+                      cachedName="SueldoDevengado"
+                      externalMetadataColumnId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].Columns[NombreEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreEmpresa"
+                      externalMetadataColumnId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      dataType="r8"
+                      name="SueldoDevengado" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ciudades\Cali.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ciudades\Cali.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Cali.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ciudades\Cali.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Cali.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ciudades\Condicional de ciudades"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Condicional de ciudades"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Ciudades\Condicional de ciudades.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ciudades\Condicional de ciudades.Inputs[Conditional Split Input].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Ciudad"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ciudades\Condicional de ciudades.Outputs[Barranquilla]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Barranquilla"
+                  synchronousInputId="Package\Ciudades\Condicional de ciudades.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]} == "Barranquilla"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Ciudad == "Barranquilla"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Ciudades\Condicional de ciudades.Outputs[Bogota]"
+                  description="Output 3 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Bogota"
+                  synchronousInputId="Package\Ciudades\Condicional de ciudades.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]} == "Bogota D.C"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Ciudad == "Bogota D.C"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Ciudades\Condicional de ciudades.Outputs[Bucaramanga]"
+                  description="Output 4 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Bucaramanga"
+                  synchronousInputId="Package\Ciudades\Condicional de ciudades.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]} == "Bucaramanga"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Ciudad == "Bucaramanga"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">2</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Ciudades\Condicional de ciudades.Outputs[Cali]"
+                  description="Output 5 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Cali"
+                  synchronousInputId="Package\Ciudades\Condicional de ciudades.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]} == "Cali"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Ciudad == "Cali"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">3</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Ciudades\Condicional de ciudades.Outputs[Medellin]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Medellin"
+                  synchronousInputId="Package\Ciudades\Condicional de ciudades.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Ciudades\Condicional de ciudades.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Ciudades\Condicional de ciudades.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ciudades\Condicional de ciudades.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Condicional de ciudades.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ciudades\Condicional de ciudades.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Condicional de ciudades.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ciudades\Medellin"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Medellin"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Medellin]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ciudades\Medellin.Connections[OleDbConnection]"
+                  connectionManagerID="{771CE16E-130B-435A-ADE7-B191F98A7E71}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-UP9Q630H.DBDestino]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].Columns[Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Cargo"
+                      externalMetadataColumnId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].Columns[SueldoDevengado]"
+                      cachedDataType="r8"
+                      cachedName="SueldoDevengado"
+                      externalMetadataColumnId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].Columns[NombreEmpresa]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreEmpresa"
+                      externalMetadataColumnId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]" />
+                    <inputColumn
+                      refId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].Columns[Ciudad]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].ExternalColumns[SueldoDevengado]"
+                      dataType="r8"
+                      name="SueldoDevengado" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].ExternalColumns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ciudades\Medellin.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ciudades\Medellin.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Medellin.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ciudades\Medellin.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Medellin.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ciudades\Origen de datos"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="Origen de datos"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Trabajadores.Nombre, Trabajadores.Cargo, Trabajadores.SueldoDevengado, Empresa.NombreEmpresa, Trabajadores.Ciudad FROM Trabajadores 
+INNER JOIN Empresa ON Trabajadores.Empresa = Empresa.IdEmpresa;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ciudades\Origen de datos.Connections[IDbConnection]"
+                  connectionManagerID="{46F35456-5E22-497A-A87A-61CE3665AF4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-UP9Q630H.ProyectoUsuarios]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Nombre]"
+                      length="30"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Cargo]"
+                      length="30"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Cargo]"
+                      name="Cargo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[SueldoDevengado]"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[SueldoDevengado]"
+                      name="SueldoDevengado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[NombreEmpresa]"
+                      length="30"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[NombreEmpresa]"
+                      name="NombreEmpresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Ciudad]"
+                      length="30"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].Columns[Ciudad]"
+                      name="Ciudad"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[SueldoDevengado]"
+                      dataType="r8"
+                      name="SueldoDevengado" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET].ExternalColumns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Nombre]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Nombre]"
+                      name="Nombre" />
+                    <outputColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Cargo]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Cargo]"
+                      name="Cargo" />
+                    <outputColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[SueldoDevengado]"
+                      dataType="r8"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[SueldoDevengado]"
+                      name="SueldoDevengado" />
+                    <outputColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[NombreEmpresa]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[NombreEmpresa]"
+                      name="NombreEmpresa" />
+                    <outputColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Ciudad]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[Ciudad]"
+                      name="Ciudad" />
+                    <outputColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ciudades\Origen de datos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Ciudades.Paths[Barranquilla]"
+              endId="Package\Ciudades\Barranquilla.Inputs[OLE DB Destination Input]"
+              name="Barranquilla"
+              startId="Package\Ciudades\Condicional de ciudades.Outputs[Barranquilla]" />
+            <path
+              refId="Package\Ciudades.Paths[Bogota]"
+              endId="Package\Ciudades\Bogota.Inputs[OLE DB Destination Input]"
+              name="Bogota"
+              startId="Package\Ciudades\Condicional de ciudades.Outputs[Bogota]" />
+            <path
+              refId="Package\Ciudades.Paths[Bucaramanga]"
+              endId="Package\Ciudades\Bucaramanga.Inputs[OLE DB Destination Input]"
+              name="Bucaramanga"
+              startId="Package\Ciudades\Condicional de ciudades.Outputs[Bucaramanga]" />
+            <path
+              refId="Package\Ciudades.Paths[Cali]"
+              endId="Package\Ciudades\Cali.Inputs[OLE DB Destination Input]"
+              name="Cali"
+              startId="Package\Ciudades\Condicional de ciudades.Outputs[Cali]" />
+            <path
+              refId="Package\Ciudades.Paths[Medellin]"
+              endId="Package\Ciudades\Medellin.Inputs[OLE DB Destination Input]"
+              name="Medellin"
+              startId="Package\Ciudades\Condicional de ciudades.Outputs[Medellin]" />
+            <path
+              refId="Package\Ciudades.Paths[Salida de origen de ADO NET]"
+              endId="Package\Ciudades\Condicional de ciudades.Inputs[Conditional Split Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\Ciudades\Origen de datos.Outputs[Salida de origen de ADO NET]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea Ejecutar SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{4F050A7A-D27C-4E4C-8669-78E9A7BE0220}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea Ejecutar SQL"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{771CE16E-130B-435A-ADE7-B191F98A7E71}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Datos;&#xA;GO&#xA; TRUNCATE TABLE [dbo].[Modalidad Remoto];&#xA;GO &#xA;TRUNCATE TABLE [dbo].[Modalidad Presencial];&#xA;GO&#xA; TRUNCATE TABLE [dbo].[Modalidad Hibrido];&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{CC36DE7F-920A-4178-ACFA-81AB4DB34309}"
+      DTS:From="Package\Tarea Ejecutar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Cargue de datos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{3EA67891-EB66-4DE8-B01A-015B9C88B149}"
+      DTS:From="Package\Tarea Ejecutar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Agrupar datos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{D8573BB7-0321-41F1-8A0B-CC4B61A2119C}"
+      DTS:From="Package\Cargue de datos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Ciudades" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Agrupar datos"
+          TopLeft="316,128" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Cargue de datos"
+          TopLeft="137,128" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Ciudades"
+          TopLeft="152,209" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Tarea Ejecutar SQL"
+          TopLeft="222,43" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="282,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-65,43"
+              Start="0,0"
+              End="-65,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.4324324324324" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.4324324324324"
+                    Point2="0,17.4324324324324"
+                    Point3="-4,17.4324324324324" />
+                  <mssgle:LineSegment
+                    End="-61,17.4324324324324" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-61,17.4324324324324"
+                    Point2="-65,17.4324324324324"
+                    Point3="-65,21.4324324324324" />
+                  <mssgle:LineSegment
+                    End="-65,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="338,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="52,43"
+              Start="0,0"
+              End="52,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.4324324324324" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.4324324324324"
+                    Point2="0,17.4324324324324"
+                    Point3="4,17.4324324324324" />
+                  <mssgle:LineSegment
+                    End="48,17.4324324324324" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48,17.4324324324324"
+                    Point2="52,17.4324324324324"
+                    Point3="52,21.4324324324324" />
+                  <mssgle:LineSegment
+                    End="52,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="216,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Agrupar datos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Agrupar datos\Modalidad Presencial"
+          TopLeft="526,120" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Agrupar datos\Modalidad Remoto"
+          TopLeft="115,203" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Agrupar datos\Origen de datos"
+          TopLeft="255,36" />
+        <NodeLayout
+          Size="254,42"
+          Id="Package\Agrupar datos\Condicionales modalidad de trabajo"
+          TopLeft="213,122" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Agrupar datos\Modalidad Hibrido"
+          TopLeft="392,202" />
+        <EdgeLayout
+          Id="Package\Agrupar datos.Paths[Remoto]"
+          TopLeft="299,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-98.5,39"
+              Start="0,0"
+              End="-98.5,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.7464788732394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.7464788732394"
+                    Point2="0,15.7464788732394"
+                    Point3="-4,15.7464788732394" />
+                  <mssgle:LineSegment
+                    End="-94.5,15.7464788732394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-94.5,15.7464788732394"
+                    Point2="-98.5,15.7464788732394"
+                    Point3="-98.5,19.7464788732394" />
+                  <mssgle:LineSegment
+                    End="-98.5,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-66.77703125,20.7464788732394,35.0540625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Agrupar datos.Paths[Presencial]"
+          TopLeft="467,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="59,0"
+              Start="0,0"
+              End="51.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="51.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="3.40787109375,5,44.6842578125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Agrupar datos.Paths[Hibrido]"
+          TopLeft="381,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95,38"
+              Start="0,0"
+              End="95,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.3427230046948" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.3427230046948"
+                    Point2="0,15.3427230046948"
+                    Point3="4,15.3427230046948" />
+                  <mssgle:LineSegment
+                    End="91,15.3427230046948" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91,15.3427230046948"
+                    Point2="95,15.3427230046948"
+                    Point3="95,19.3427230046948" />
+                  <mssgle:LineSegment
+                    End="95,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="31.29796875,20.3427230046948,32.4040625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Agrupar datos.Paths[Salida de origen de ADO NET]"
+          TopLeft="336.75,78">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Agrupar datos\Origen de datos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Agrupar datos\Modalidad Hibrido">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Agrupar datos\Modalidad Remoto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Agrupar datos\Modalidad Presencial">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Cargue de datos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Cargue de datos\Origen de datos"
+          TopLeft="265,27" />
+        <NodeLayout
+          Size="108,42"
+          Id="Package\Cargue de datos\Datos"
+          TopLeft="290,96" />
+        <EdgeLayout
+          Id="Package\Cargue de datos.Paths[Salida de origen de ADO NET]"
+          TopLeft="343.75,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargue de datos\Datos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargue de datos\Origen de datos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Ciudades">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Ciudades\Origen de datos"
+          TopLeft="239,20" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Ciudades\Condicional de ciudades"
+          TopLeft="219,85" />
+        <EdgeLayout
+          Id="Package\Ciudades.Paths[Salida de origen de ADO NET]"
+          TopLeft="318,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23"
+              Start="0,0"
+              End="0,15.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Ciudades\Barranquilla"
+          TopLeft="44,165" />
+        <EdgeLayout
+          Id="Package\Ciudades.Paths[Barranquilla]"
+          TopLeft="227,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-114,38"
+              Start="0,0"
+              End="-114,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="-4,19" />
+                  <mssgle:LineSegment
+                    End="-110,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-110,19"
+                    Point2="-114,19"
+                    Point3="-114,23" />
+                  <mssgle:LineSegment
+                    End="-114,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-83.518359375,24,53.03671875,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="114,42"
+          Id="Package\Ciudades\Bogota"
+          TopLeft="197,167" />
+        <EdgeLayout
+          Id="Package\Ciudades.Paths[Bogota]"
+          TopLeft="253.75,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.753359375,10.58203125,31.50671875,11.3359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Ciudades\Bucaramanga"
+          TopLeft="320,169" />
+        <EdgeLayout
+          Id="Package\Ciudades.Paths[Bucaramanga]"
+          TopLeft="392.875,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-30.413359375,11.58203125,60.82671875,11.3359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Ciudades\Cali"
+          TopLeft="475,168" />
+        <EdgeLayout
+          Id="Package\Ciudades.Paths[Cali]"
+          TopLeft="375.8,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="148.2,41"
+              Start="0,0"
+              End="148.2,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.21030345800988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.21030345800988"
+                    Point2="0,12.2103034580099"
+                    Point3="4,12.2103034580099" />
+                  <mssgle:LineSegment
+                    End="144.2,12.2103034580099" />
+                  <mssgle:CubicBezierSegment
+                    Point1="144.2,12.2103034580099"
+                    Point2="148.2,12.2103034580099"
+                    Point3="148.2,16.2103034580099" />
+                  <mssgle:LineSegment
+                    End="148.2,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="65.65361328125,17.2103034580099,16.8927734375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Ciudades\Medellin"
+          TopLeft="493,86" />
+        <EdgeLayout
+          Id="Package\Ciudades.Paths[Medellin]"
+          TopLeft="418,106.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75,0"
+              Start="0,0"
+              End="67.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="67.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="15.32806640625,5,36.8438671875,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ciudades\Cali">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ciudades\Origen de datos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ciudades\Medellin">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ciudades\Bogota">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ciudades\Bucaramanga">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ciudades\Barranquilla">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

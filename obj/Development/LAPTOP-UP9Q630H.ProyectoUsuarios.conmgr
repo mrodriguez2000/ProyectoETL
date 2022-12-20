@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LAPTOP-UP9Q630H.ProyectoUsuarios"
+  DTS:DTSID="{46F35456-5E22-497A-A87A-61CE3665AF4D}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=LAPTOP-UP9Q630H;Initial Catalog=ProyectoUsuarios;Integrated Security=True;Application Name=SSIS-ETL Usuarios-{46F35456-5E22-497A-A87A-61CE3665AF4D}LAPTOP-UP9Q630H.ProyectoUsuarios;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
