@@ -11,8 +11,8 @@
   DTS:LocaleID="9226"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="105"
-  DTS:VersionGUID="{732E6FCA-8130-49A2-94D6-2C609EADA729}">
+  DTS:VersionBuild="108"
+  DTS:VersionGUID="{10370BC9-EC73-413B-90A7-2BA51D3E01A5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2610,7 +2610,7 @@ INNER JOIN Empresa ON Trabajadores.Empresa = Empresa.IdEmpresa;</property>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{771CE16E-130B-435A-ADE7-B191F98A7E71}"
           SQLTask:BypassPrepare="False"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE Datos;&#xA;GO&#xA; TRUNCATE TABLE [dbo].[Modalidad Remoto];&#xA;GO &#xA;TRUNCATE TABLE [dbo].[Modalidad Presencial];&#xA;GO&#xA; TRUNCATE TABLE [dbo].[Modalidad Hibrido];&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Datos;&#xA;GO&#xA;TRUNCATE TABLE [dbo].[Modalidad Remoto];&#xA;GO &#xA;TRUNCATE TABLE [dbo].[Modalidad Presencial];&#xA;GO&#xA;TRUNCATE TABLE [dbo].[Modalidad Hibrido];&#xA;GO&#xA;TRUNCATE TABLE [dbo].[Barranquilla];&#xA;GO&#xA;TRUNCATE TABLE [dbo].[Bogota];&#xA;GO&#xA;TRUNCATE TABLE [dbo].[Bucaramanga];&#xA;GO&#xA;TRUNCATE TABLE [dbo].[Cali];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2634,8 +2634,8 @@ INNER JOIN Empresa ON Trabajadores.Empresa = Empresa.IdEmpresa;</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{D8573BB7-0321-41F1-8A0B-CC4B61A2119C}"
-      DTS:From="Package\Cargue de datos"
+      DTS:DTSID="{B133DBB2-3B7D-4949-8C9C-ACEC87BB2D22}"
+      DTS:From="Package\Tarea Ejecutar SQL"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\Ciudades" />
@@ -2655,15 +2655,15 @@ INNER JOIN Empresa ON Trabajadores.Empresa = Empresa.IdEmpresa;</property>
         <NodeLayout
           Size="148,42"
           Id="Package\Agrupar datos"
-          TopLeft="337,129" />
+          TopLeft="246,129" />
         <NodeLayout
           Size="160,42"
           Id="Package\Cargue de datos"
-          TopLeft="137,128" />
+          TopLeft="81,130" />
         <NodeLayout
           Size="126,42"
           Id="Package\Ciudades"
-          TopLeft="149,211" />
+          TopLeft="404,130" />
         <NodeLayout
           Size="176,42"
           Id="Package\Tarea Ejecutar SQL"
@@ -2674,26 +2674,26 @@ INNER JOIN Empresa ON Trabajadores.Empresa = Empresa.IdEmpresa;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-65,43"
+              EndConnector="-121,45"
               Start="0,0"
-              End="-65,35.5">
+              End="-121,37.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.4324324324324" />
+                    End="0,14.2432432432432" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,13.4324324324324"
-                    Point2="0,17.4324324324324"
-                    Point3="-4,17.4324324324324" />
+                    Point1="0,14.2432432432432"
+                    Point2="0,18.2432432432432"
+                    Point3="-4,18.2432432432432" />
                   <mssgle:LineSegment
-                    End="-61,17.4324324324324" />
+                    End="-117,18.2432432432432" />
                   <mssgle:CubicBezierSegment
-                    Point1="-61,17.4324324324324"
-                    Point2="-65,17.4324324324324"
-                    Point3="-65,21.4324324324324" />
+                    Point1="-117,18.2432432432432"
+                    Point2="-121,18.2432432432432"
+                    Point3="-121,22.2432432432432" />
                   <mssgle:LineSegment
-                    End="-65,35.5" />
+                    End="-121,37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2704,30 +2704,30 @@ INNER JOIN Empresa ON Trabajadores.Empresa = Empresa.IdEmpresa;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="338,85">
+          TopLeft="310,85">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="73,44"
+              EndConnector="10,44"
               Start="0,0"
-              End="73,36.5">
+              End="10,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.8378378378378" />
+                    End="0,18" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,13.8378378378378"
-                    Point2="0,17.8378378378378"
-                    Point3="4,17.8378378378378" />
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="4,22" />
                   <mssgle:LineSegment
-                    End="69,17.8378378378378" />
+                    End="6,22" />
                   <mssgle:CubicBezierSegment
-                    Point1="69,17.8378378378378"
-                    Point2="73,17.8378378378378"
-                    Point3="73,21.8378378378378" />
+                    Point1="6,22"
+                    Point2="10,22"
+                    Point3="10,26" />
                   <mssgle:LineSegment
-                    End="73,36.5" />
+                    End="10,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2738,18 +2738,30 @@ INNER JOIN Empresa ON Trabajadores.Empresa = Empresa.IdEmpresa;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="214.5,170">
+          TopLeft="352,85">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,41"
+              EndConnector="115,45"
               Start="0,0"
-              End="0,33.5">
+              End="115,37.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.5" />
+                    End="0,11.4477611940299" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.4477611940299"
+                    Point2="0,15.4477611940299"
+                    Point3="4,15.4477611940299" />
+                  <mssgle:LineSegment
+                    End="111,15.4477611940299" />
+                  <mssgle:CubicBezierSegment
+                    Point1="111,15.4477611940299"
+                    Point2="115,15.4477611940299"
+                    Point3="115,19.4477611940299" />
+                  <mssgle:LineSegment
+                    End="115,37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2960,7 +2972,7 @@ INNER JOIN Empresa ON Trabajadores.Empresa = Empresa.IdEmpresa;</property>
     design-time-name="Package\Cargue de datos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="157,42"
           Id="Package\Cargue de datos\Origen de datos"
@@ -2988,7 +3000,9 @@ INNER JOIN Empresa ON Trabajadores.Empresa = Empresa.IdEmpresa;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
