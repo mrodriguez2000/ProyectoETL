@@ -11,8 +11,8 @@
   DTS:LocaleID="9226"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="120"
-  DTS:VersionGUID="{3E502591-42C0-4F0D-80CD-43AD92240DD0}">
+  DTS:VersionBuild="124"
+  DTS:VersionGUID="{CC8756B7-DC22-4882-AADC-A6A67124D647}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3077,9 +3077,7 @@ INNER JOIN Empresa ON Trabajadores.Empresa = Empresa.IdEmpresa;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
